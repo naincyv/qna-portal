@@ -1,0 +1,20 @@
+body, head {
+    background-color: #e2cbe2;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+nav {
+    background-color: rgb(213, 181, 213);
+}
+h1, h2 {
+    color: #831a7bf8;
+}
+
+a {
+    text-decoration: none;
+    color: #831a7bf8;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}

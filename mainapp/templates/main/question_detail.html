@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+{% block content %}
+    <h2>{{question.title}}</h2>
+    <p>{{question.description}}</p>
+    <h3>Answers: </h3>
+    {% for question in questions %}
+        <h2>
+            <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>
+        </h2>
+    {% endfor %}
+    {% for answer in answers %}
+    <div>
+        <!-- Optional like button -->
+        <p>{{ answer.content }} </br>- by {{ answer.user }}
+            <a href="{% url 'like_answer' answer.id %}"><i class="fas fa-thumbs-up"></i>({{ answer.total_likes }})</a></p>
+    </div>
+    {% endfor %}
+    {% if user == question.user %}
+    <form method="post" action="{% url 'delete_question' question.id %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+    </form>
+    {% endif %}
+    <form method="post" action="{% url 'post_answer' question.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Post Answer</button>
+      </form>
+      <p><a href="{% url 'home' %}">Back</a></p>
+{% endblock %}
